@@ -1,5 +1,5 @@
 #LaTeX document class for bachelor and master theses written at the Institute for Web Science and Technologies
-The document class "WeSTthesis.cls" is based on "cgBA.cls" which was provided by the [Research Group Mueller](http://www.uni-koblenz-landau.de/koblenz/fb4/institute/icv/agmueller). It is oriented at the style guides provided by the examination board of the [Faculty of Computer Science](http://www.uni-koblenz-landau.de/campus-koblenz/fb4) at the [University of Koblenz-Landau](http://www.uni-koblenz-landau.de/). The document class provides a cover sheet template, a statement on source usage and publication, and some basic text formatting. The file [example.tex](example.tex) contains some of the most important LaTeX packages for writing a bachelor or master thesis.
+The document class "WeSTthesis.cls" is based on "cgBA.cls" which was provided by the [Research Group Mueller](http://www.uni-koblenz-landau.de/koblenz/fb4/institute/icv/agmueller). It is oriented at the style guides provided by the examination board of the [Faculty of Computer Science](http://www.uni-koblenz-landau.de/campus-koblenz/fb4) at the [University of Koblenz-Landau](http://www.uni-koblenz-landau.de/). The document class provides a cover page template, a statement on source usage and publication, and some basic text formatting. The file [example.tex](example.tex) contains some of the most important LaTeX packages for writing a bachelor or master thesis.
 
 #Usage
 The following command is used to include the document class in the .tex document.
@@ -18,7 +18,7 @@ The following options are supported:
 
 If the option `twoside` is activated, there are blank pages inserted after the cover page and its following statement(s).
 
-The following commands are used to format the cover sheet template. They are used before `\begin{document}`.
+The following commands are used to format the cover page. They are used before `\begin{document}`.
 
     \title{thesis title}
     \author{author(s) name(s)}
@@ -37,7 +37,7 @@ The following commands are used after the `\begin{document}` statement.
 
 	  \selectlanguage{english}  % optional: change document language from ngerman to english
 
-    \varclearpage  % \cleardoublepage if twoside is set and \clearpage if not (useful for switching between two-side and single-side)
+    \varclearpage  % \cleardoublepage if twoside is set and the current page number is odd. \clearpage otherwise (useful for switching between two-side and single-side layout)
 
 #Example
 For an example see [example.tex](example.tex). The output should look like [example.pdf](example.pdf).

@@ -99,7 +99,13 @@
 %--- Code ----------------------------------------------------------------------
 
 \iftwoside
-  \newcommand{\varclearpage}{\cleardoublepage}
+  \newcommand{\varclearpage}{
+    \ifodd\c@page
+      \cleardoublepage
+    \else
+      \clearpage
+    \fi
+  }
 \else
   \newcommand{\varclearpage}{\clearpage}
 \fi
@@ -112,9 +118,10 @@
 \newcommand{\secondreviewer}[1]{\def\secondreviewer{#1}}
 \newcommand{\secondreviewerinfo}[1]{\def\secondreviewerinfo{#1}}
 
-\newcommand{\monthword}{\ifcase\month
-  \or Januar\or Februar\or M\"arz\or April\or Mai\or Juni\or Juli
-  \or August\or September\or Oktober\or November\or Dezember\fi
+\newcommand{\monthword}{
+  \ifcase\month
+    \or Januar\or Februar\or M\"arz\or April\or Mai\or Juni\or Juli
+    \or August\or September\or Oktober\or November\or Dezember\fi
 }
 
 % redefine \maketitle
@@ -221,10 +228,14 @@
         \begin{center}
         \begin{tabular}{l p{1cm} cc}
           {} & {} & Ja & Nein\\[.5cm]
-          Mit der Einstellung dieser Arbeit in die Bibliothek& {} & {}\\
+          Mit der Einstellung dieser Arbeit in die Bibliothek& {} & {} & {}\\
           bin ich einverstanden. & {} & $\square$ & $\square$\\[.5cm]
           Der Ver\"offentlichung dieser Arbeit im Internet& {} & {} & {}\\
-          stimme ich zu.& {} & $\square$ & $\square$\\
+          stimme ich zu.& {} & $\square$ & $\square$\\[.5cm]
+          Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
+          Lizenz verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+          Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
+          Commons Lizenz verf\"ugbar. & {} & $\square$ & $\square$\\
         \end{tabular}\\[2cm]
         \end{center}
 	      \begin{small}
@@ -233,14 +244,18 @@
         \end{small}
         \advance\authornumber by -1
         \ifnum\authornumber>0
-          \\[2cm]
+          \clearpage
         \fi
       \repeat
     \end{flushleft}
   \end{titlepage}
   \iftwoside
-    \begin{titlepage}
-      \null\clearpage
-    \end{titlepage}
+    \ifgroup
+      % everything is just fine
+    \else
+      \begin{titlepage}
+        \null\clearpage
+      \end{titlepage}
+    \fi
   \fi
 }
