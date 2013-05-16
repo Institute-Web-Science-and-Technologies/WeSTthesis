@@ -232,6 +232,8 @@
           bin ich einverstanden. & {} & $\square$ & $\square$\\[.5cm]
           Der Ver\"offentlichung dieser Arbeit im Internet& {} & {} & {}\\
           stimme ich zu.& {} & $\square$ & $\square$\\[.5cm]
+          Der Text dieser Arbeit ist unter einer Creative & {} & {} & {}\\
+          Commons Lizenz verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
           Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
           Lizenz verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
           Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
