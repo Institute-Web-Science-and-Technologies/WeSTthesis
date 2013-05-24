@@ -42,3 +42,5 @@ The following commands are used after the `\begin{document}` statement.
 #Example
 For an example see [example.tex](example.tex). The output should look like [example.pdf](example.pdf).
 
+#Additional tips
+You can add the WeSTthesis folder to `~/texmf/tex/latex/` to make WeSTthesis globally available on Linux systems.
