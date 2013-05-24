@@ -1,7 +1,7 @@
 #LaTeX document class for bachelor and master theses written at the Institute for Web Science and Technologies
 The document class "WeSTthesis.cls" is based on "cgBA.cls" which was provided by the [Research Group Mueller](http://www.uni-koblenz-landau.de/koblenz/fb4/institute/icv/agmueller). It is oriented at the style guides provided by the examination board of the [Faculty of Computer Science](http://www.uni-koblenz-landau.de/campus-koblenz/fb4) at the [University of Koblenz-Landau](http://www.uni-koblenz-landau.de/). The document class provides a cover page template, a statement on source usage and publication, and some basic text formatting. The file [example.tex](example.tex) contains some of the most important LaTeX packages for writing a bachelor or master thesis.
 
-#Usage
+##Usage
 The following command is used to include the document class in the .tex document.
 
     \documentclass[<options>]{WeSTthesis}
@@ -39,8 +39,8 @@ The following commands are used after the `\begin{document}` statement.
 
     \varclearpage  % \cleardoublepage if twoside is set and the current page number is odd. \clearpage otherwise (useful for switching between two-side and single-side layout)
 
-#Example
+##Example
 For an example see [example.tex](example.tex). The output should look like [example.pdf](example.pdf).
 
-#Additional tips
+##Additional tips
 You can add the WeSTthesis folder to `~/texmf/tex/latex/` to make WeSTthesis globally available on Linux systems.
