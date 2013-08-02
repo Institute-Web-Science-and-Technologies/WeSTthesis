@@ -196,7 +196,7 @@
       vorgelegt von\\
     \end{large}
     \begin{Large}
-      \@author\\[4cm]
+      \@author\\[3.8cm]
     \end{Large}
    	\end{center}
     \begin{tabular}{ll}
@@ -204,7 +204,7 @@
       {} & \firstreviewerinfo\\[2.5mm]
   	  Zweitgutachter: & \secondreviewer\\
       {} & \secondreviewerinfo\\[2cm]
-      \multicolumn{2}{l}{Koblenz, im\ \monthword\ \the\year}\\
+      \multicolumn{2}{l}{Koblenz, im\monthword\ \the\year}\\
     \end{tabular}
   \end{titlepage}
   \iftwoside
