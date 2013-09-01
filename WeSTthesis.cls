@@ -224,7 +224,7 @@
         \begin{Large}
           Erkl{\"a}rung\\[5mm]
         \end{Large}
-        Ich versichere, dass ich die vorliegende Arbeit selbst\"andig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.\\[.75cm]
+        Hiermit best\"atige ich, dass die vorliegende Arbeit von mir selbst\"andig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel -- insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen -- benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr\"ufungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
         \begin{center}
         \begin{tabular}{l p{1cm} cc}
           {} & {} & Ja & Nein\\[.5cm]
