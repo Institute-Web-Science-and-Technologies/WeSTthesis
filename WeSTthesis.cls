@@ -233,11 +233,11 @@
           Der Ver\"offentlichung dieser Arbeit im Internet& {} & {} & {}\\
           stimme ich zu.& {} & $\square$ & $\square$\\[.5cm]
           Der Text dieser Arbeit ist unter einer Creative & {} & {} & {}\\
-          Commons Lizenz verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+          Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
           Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
-          Lizenz verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+          Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
           Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
-          Commons Lizenz verf\"ugbar. & {} & $\square$ & $\square$\\
+          Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\
         \end{tabular}\\[2cm]
         \end{center}
 	      \begin{small}
