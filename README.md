@@ -1,4 +1,4 @@
-#LaTeX document class for bachelor and master theses written at the Institute for Web Science and Technologies
+#LaTeX document class for seminar papers, bachelor theses, and master theses written at the Institute for Web Science and Technologies
 The document class "WeSTthesis.cls" is based on "cgBA.cls" which was provided by the [Research Group Mueller](http://www.uni-koblenz-landau.de/koblenz/fb4/institute/icv/agmueller). It is oriented at the style guides provided by the examination board of the [Faculty of Computer Science](http://www.uni-koblenz-landau.de/campus-koblenz/fb4) at the [University of Koblenz-Landau](http://www.uni-koblenz-landau.de/). The document class provides a cover page template, a statement on source usage and publication, and some basic text formatting. The file [example.tex](example.tex) contains some of the most important LaTeX packages for writing a seminar paper, bachelor thesis, or master thesis.
 
 ##Usage
@@ -36,7 +36,7 @@ The following commands are used after the `\begin{document}` statement.
 
     \maketitle  % prints the cover page and a statement about used sources and publication
 
-	  \selectlanguage{english}  % optional: change document language from ngerman to english
+    \selectlanguage{english}  % optional: change document language from ngerman to english
 
     \varclearpage  % \cleardoublepage if twoside is set and the current page number is odd. \clearpage otherwise (useful for switching between two-side and single-side layout)
 
