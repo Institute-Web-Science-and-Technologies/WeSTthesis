@@ -1,23 +1,25 @@
 %*******************************************************************************
 %  WeSTthesis.cls
 %
-%  LaTeX document class for bachelor and master theses written at the Institute
-%  for Web Science and Technologies.
+%  LaTeX document class for seminar papers, bachelor theses, and master theses
+%  written at the Institute for Web Science and Technologies.
 %
-%  (C) 2013 Institute for Web Science and Technologies <west@uni-koblenz.de>
+%  (C) 2015 Institute for Web Science and Technologies <west@uni-koblenz.de>
 %           University of Koblenz-Landau, Campus Koblenz
 %
 %  Special thanks to Prof. Stefan Mueller for allowing the adaptation of
 %  cgBA.cls.
 %
-%	 2013/05/15  v0.1  Martin Koerner<info@mkoerner.de>  initial version
+%	 2013/05/15  v1.0  Martin Koerner<info@mkoerner.de>  initial version
+%	 2015/01/06  v1.1  Martin Koerner<info@mkoerner.de>  add options for seminar
+%                                                      and date
 %*******************************************************************************
 
 
 %--- Identification ------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{WeSTthesis}[2013/05/15 v0.1 Document class for bachelor and master theses written at the Institute for Web Science and Technologies, University of Koblenz-Landau, Campus Koblenz.]
+\ProvidesClass{WeSTthesis}[2015/01/06 v1.1 Document class for seminar papers, bachelor theses, and master theses written at the Institute for Web Science and Technologies, University of Koblenz-Landau, Campus Koblenz.]
 
 
 %--- Declaration of variables --------------------------------------------------
@@ -28,8 +30,11 @@
 
 \newif\ifgroup
 
+\newif\ifseminar
 \newif\ifbachelor
 \newif\ifmaster
+
+\newif\ifdate
 
 \newif\iftimes
 \newif\ifpalatino
@@ -49,8 +54,11 @@
 
 \DeclareOption{group}{\grouptrue}
 
+\DeclareOption{seminar}{\seminartrue}
 \DeclareOption{bachelor}{\bachelortrue}
 \DeclareOption{master}{\mastertrue}
+
+\DeclareOption{date}{\datetrue}
 
 \DeclareOption{times}{\timestrue}
 \DeclareOption{palatino}{\palatinotrue}
@@ -164,93 +172,116 @@
         \ifmaster
           Masterarbeit\\[.2cm]
         \else
-          >>SET GRADE (bachelor or master) IN DOCUMENTCLASS OPTIONS<<
+          \ifseminar
+            Seminararbeit\\[.2cm]
+          \else
+            >>SET TYPE (seminar, bachelor, or master) IN DOCUMENTCLASS OPTIONS<<
+          \fi
         \fi
       \fi
     \end{huge}
-    zur Erlangung des Grades
-    \iffemalemale
-      einer/eines
+    \ifseminar
+      %do nothing
     \else
-      \iffemale
-        einer
+      zur Erlangung des Grades
+      \iffemalemale
+        einer/eines
       \else
-        \ifmale
-      	  eines
+        \iffemale
+          einer
         \else
-          >>SET GENDER (fm, f, or m) IN DOCUMENTCLASS OPTIONS<<
+          \ifmale
+            eines
+          \else
+            >>SET GENDER (fm, f, or m) IN DOCUMENTCLASS OPTIONS<<
+          \fi
         \fi
       \fi
-    \fi
-    \ifbachelor
-      Bachelor of Science (B.Sc.)\\
-    \else
-      \ifmaster
-        Master of Science (M.Sc.)\\
+      \ifbachelor
+        Bachelor of Science (B.Sc.)\\
       \else
-        >>SET GRADE (bachelor or master) IN DOCUMENTCLASS OPTIONS<<
+        \ifmaster
+          Master of Science (M.Sc.)\\
+        \else
+          >>SET GRADE (bachelor or master) IN DOCUMENTCLASS OPTIONS<<
+        \fi
       \fi
+      im Studiengang \degreecourse\\[.75cm]
     \fi
-    im Studiengang \degreecourse\\[.75cm]
     \begin{large}
       vorgelegt von\\
     \end{large}
     \begin{Large}
-      \@author\\[3.8cm]
+      \@author\\[3.79cm]
     \end{Large}
    	\end{center}
     \begin{tabular}{ll}
-      Erstgutachter: & \firstreviewer\\
-      {} & \firstreviewerinfo\\[2.5mm]
-  	  Zweitgutachter: & \secondreviewer\\
-      {} & \secondreviewerinfo\\[2cm]
-      \multicolumn{2}{l}{Koblenz, im\monthword\ \the\year}\\
-    \end{tabular}
+      \ifseminar
+        Betreuer: & \firstreviewer\\
+        {} & \firstreviewerinfo\\[2.5mm]
+        {} & \secondreviewer\\
+        {} & \secondreviewerinfo\\[2cm]
+      \else
+        Erstgutachter: & \firstreviewer\\
+        {} & \firstreviewerinfo\\[2.5mm]
+        Zweitgutachter: & \secondreviewer\\
+        {} & \secondreviewerinfo\\[2cm]
+      \fi
+    \end{tabular}\\
+    \ifdate
+      Koblenz, \today
+    \else
+      Koblenz, im\monthword\ \the\year
+    \fi
   \end{titlepage}
-  \iftwoside
+  \ifseminar
+  %don't print the assertion
+  \else
+    \iftwoside
+      \begin{titlepage}
+        \null\clearpage
+      \end{titlepage}
+    \fi
+    \newcount\authornumber
+    \ifgroup
+      \authornumber=2
+    \else
+      \authornumber=1
+    \fi
     \begin{titlepage}
-      \null\clearpage
+      \begin{flushleft}
+        \loop\ifnum\authornumber>0
+          \begin{Large}
+            Erkl{\"a}rung\\[5mm]
+          \end{Large}
+          Hiermit best\"atige ich, dass die vorliegende Arbeit von mir selbstst\"andig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel -- insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen -- benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr\"ufungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
+          \begin{center}
+          \begin{tabular}{l p{1cm} cc}
+            {} & {} & Ja & Nein\\[.5cm]
+            Mit der Einstellung dieser Arbeit in die Bibliothek& {} & {} & {}\\
+            bin ich einverstanden. & {} & $\square$ & $\square$\\[.5cm]
+            Der Ver\"offentlichung dieser Arbeit im Internet& {} & {} & {}\\
+            stimme ich zu.& {} & $\square$ & $\square$\\[.5cm]
+            Der Text dieser Arbeit ist unter einer Creative & {} & {} & {}\\
+            Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+            Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
+            Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+            Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
+            Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\
+          \end{tabular}\\[2cm]
+          \end{center}
+          \begin{small}
+            \dotfill\\
+            (Ort, Datum)\hfill(Unterschrift)
+          \end{small}
+          \advance\authornumber by -1
+          \ifnum\authornumber>0
+            \clearpage
+          \fi
+        \repeat
+      \end{flushleft}
     \end{titlepage}
   \fi
-  \newcount\authornumber
-  \ifgroup
-    \authornumber=2
-  \else
-    \authornumber=1
-  \fi
-  \begin{titlepage}
-    \begin{flushleft}
-      \loop\ifnum\authornumber>0
-        \begin{Large}
-          Erkl{\"a}rung\\[5mm]
-        \end{Large}
-        Hiermit best\"atige ich, dass die vorliegende Arbeit von mir selbstst\"andig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel -- insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen -- benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr\"ufungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
-        \begin{center}
-        \begin{tabular}{l p{1cm} cc}
-          {} & {} & Ja & Nein\\[.5cm]
-          Mit der Einstellung dieser Arbeit in die Bibliothek& {} & {} & {}\\
-          bin ich einverstanden. & {} & $\square$ & $\square$\\[.5cm]
-          Der Ver\"offentlichung dieser Arbeit im Internet& {} & {} & {}\\
-          stimme ich zu.& {} & $\square$ & $\square$\\[.5cm]
-          Der Text dieser Arbeit ist unter einer Creative & {} & {} & {}\\
-          Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
-          Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
-          Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
-          Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
-          Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\
-        \end{tabular}\\[2cm]
-        \end{center}
-	      \begin{small}
-          \dotfill\\
-          (Ort, Datum)\hfill(Unterschrift)
-        \end{small}
-        \advance\authornumber by -1
-        \ifnum\authornumber>0
-          \clearpage
-        \fi
-      \repeat
-    \end{flushleft}
-  \end{titlepage}
   \iftwoside
     \ifgroup
       % everything is just fine
