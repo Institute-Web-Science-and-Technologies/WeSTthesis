@@ -1,8 +1,8 @@
 %*******************************************************************************
 %  WeSTthesis.cls
 %
-%  LaTeX document class for seminar papers, bachelor theses, and master theses
-%  written at the Institute for Web Science and Technologies.
+%  LaTeX document class for seminar papers, proposals, bachelor's theses, and
+%  master's theses written at the Institute for Web Science and Technologies.
 %
 %  (C) 2015 Institute for Web Science and Technologies <west@uni-koblenz.de>
 %           University of Koblenz-Landau, Campus Koblenz
@@ -13,9 +13,8 @@
 %	 2013/05/15  v1.0  Martin Koerner<info@mkoerner.de>  initial version
 %	 2015/01/06  v1.1  Martin Koerner<info@mkoerner.de>  add options for seminar
 %                                                      and date
-%	 2015/08/19  v1.2  Martin Koerner<info@mkoerner.de>  add options for proposal
-%                                                      and change master thesis
-%                                                      documentclass to scrreprt
+%	 2015/12/20  v1.2  Martin Koerner<info@mkoerner.de>  add options for proposal
+%                                                      and scrreprt
 %
 %*******************************************************************************
 
@@ -23,7 +22,7 @@
 %--- Identification ------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{WeSTthesis}[2015/01/06 v1.1 Document class for seminar papers, bachelor theses, and master theses written at the Institute for Web Science and Technologies, University of Koblenz-Landau, Campus Koblenz.]
+\ProvidesClass{WeSTthesis}[2015/12/20 v1.2 Document class for seminar papers, proposals, bachelor's theses, and master's theses written at the Institute for Web Science and Technologies, University of Koblenz-Landau, Campus Koblenz.]
 
 
 %--- Declaration of variables --------------------------------------------------
@@ -38,6 +37,8 @@
 \newif\ifproposal
 \newif\ifbachelor
 \newif\ifmaster
+
+\newif\ifscrreprt
 
 \newif\ifdate
 
@@ -64,12 +65,15 @@
 \DeclareOption{bachelor}{\bachelortrue}
 \DeclareOption{master}{\mastertrue}
 
+\DeclareOption{scrreprt}{\scrreprttrue}
+
 \DeclareOption{date}{\datetrue}
 
 \DeclareOption{times}{\timestrue}
+
 \DeclareOption{palatino}{\palatinotrue}
 
-\DeclareOption{twoside}{\twosidetrue\PassOptionsToClass{twoside}{article}}
+\DeclareOption{twoside}{\twosidetrue}
 
 \DeclareOption{binding}{\bindingtrue}
 
@@ -83,10 +87,16 @@
 
 %--- Loading of packages -------------------------------------------------------
 
-\ifmaster
+\ifscrreprt
   \LoadClass[a4paper,11pt,titlepage]{scrreprt}
+  \iftwoside
+    \PassOptionsToClass{twoside}{scrreprt}
+  \fi
 \else
   \LoadClass[a4paper,11pt,titlepage]{article}
+  \iftwoside
+    \PassOptionsToClass{twoside}{article}
+  \fi
 \fi
 
 % Default: Computer Modern (TeX-Standard)

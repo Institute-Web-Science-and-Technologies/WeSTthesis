@@ -1,5 +1,5 @@
-#LaTeX document class for seminar papers, bachelor theses, and master theses written at the Institute for Web Science and Technologies
-The document class "WeSTthesis.cls" is based on "cgBA.cls" which was provided by the [Research Group Mueller](http://www.uni-koblenz-landau.de/koblenz/fb4/institute/icv/agmueller). It is oriented at the style guides provided by the examination board of the [Faculty of Computer Science](http://www.uni-koblenz-landau.de/campus-koblenz/fb4) at the [University of Koblenz-Landau](http://www.uni-koblenz-landau.de/). The document class provides a cover page template, a statement on source usage and publication, and some basic text formatting. The file [example.tex](example.tex) contains some of the most important LaTeX packages for writing a seminar papers, bachelor thesis, or master thesis.
+#LaTeX document class for seminar papers, proposals, bachelor's theses, and master's theses written at the Institute for Web Science and Technologies
+The document class "WeSTthesis.cls" is based on "cgBA.cls" which was provided by the [Research Group Mueller](http://www.uni-koblenz-landau.de/koblenz/fb4/institute/icv/agmueller). It is oriented at the style guides provided by the examination board of the [Faculty of Computer Science](http://www.uni-koblenz-landau.de/campus-koblenz/fb4) at the [University of Koblenz-Landau](http://www.uni-koblenz-landau.de/). The document class provides a cover page template, a statement on source usage and publication, and some basic text formatting. The file [example.tex](example.tex) contains a template for creating documents using this document class.
 
 ##Usage
 The following command is used to include the document class in the .tex document.
@@ -8,14 +8,15 @@ The following command is used to include the document class in the .tex document
 
 The following options are supported:
 
-- f|m|fm                  - gender used in the title: female, male, or both (required)
-- seminar|bachelor|master - seminar paper, bachelor thesis, or master thesis (required)
-- group                   - prints two statements after the cover page (optional)
-- date                    - prints the exact date instead of month and year (optional)
-- times|palatino	        - used font (only one can be applied at the same time, the default font is "Computer Modern") (optional)
-- twoside                 - layout for two-sided print (optional)
-- binding                 - adds 8mm on the left/right side for binding (optional)
-- frames                  - prints additional frames to check the document layout (optional)
+- `f|m|fm`                            - gender used in the title: female, male, or both (required)
+- `seminar|proposal|bachelor|master`  - seminar paper, proposal, bachelor's thesis, or master's thesis (required)
+- `scrreprt`                          - use the scrreprt documentclass instead of article (optional)
+- `group`                             - prints two statements after the cover page (optional)
+- `date`                              - prints the exact date instead of month and year (optional)
+- `times|palatino`	                  - used font (only one can be applied at the same time, the default font is "Computer Modern") (optional)
+- `twoside`                           - layout for two-sided print (optional)
+- `binding`                           - adds 8mm on the left/right side for binding (optional)
+- `frames`                            - prints additional frames to check the document layout (optional)
 
 If the option `twoside` is activated, there are blank pages inserted after the cover page and its following statement(s).
 
@@ -39,6 +40,7 @@ The following commands are used after the `\begin{document}` statement.
     \selectlanguage{english}  % optional: change document language from ngerman to english
 
     \varclearpage  % \cleardoublepage if twoside is set and the current page number is odd. \clearpage otherwise (useful for switching between two-side and single-side layout)
+
 
 ##Example
 For an example see [example.tex](example.tex). The output should look like [example.pdf](example.pdf).
