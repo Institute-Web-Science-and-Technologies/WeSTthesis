@@ -13,6 +13,10 @@
 %	 2013/05/15  v1.0  Martin Koerner<info@mkoerner.de>  initial version
 %	 2015/01/06  v1.1  Martin Koerner<info@mkoerner.de>  add options for seminar
 %                                                      and date
+%	 2015/08/19  v1.2  Martin Koerner<info@mkoerner.de>  add options for proposal
+%                                                      and change master thesis
+%                                                      documentclass to scrreprt
+%
 %*******************************************************************************
 
 
@@ -31,6 +35,7 @@
 \newif\ifgroup
 
 \newif\ifseminar
+\newif\ifproposal
 \newif\ifbachelor
 \newif\ifmaster
 
@@ -55,6 +60,7 @@
 \DeclareOption{group}{\grouptrue}
 
 \DeclareOption{seminar}{\seminartrue}
+\DeclareOption{proposal}{\proposaltrue}
 \DeclareOption{bachelor}{\bachelortrue}
 \DeclareOption{master}{\mastertrue}
 
@@ -77,7 +83,12 @@
 
 %--- Loading of packages -------------------------------------------------------
 
-\LoadClass[a4paper,11pt,titlepage]{article}
+\ifmaster
+  \LoadClass[a4paper,11pt,titlepage]{scrreprt}
+\else
+  \LoadClass[a4paper,11pt,titlepage]{article}
+\fi
+
 % Default: Computer Modern (TeX-Standard)
 \iftimes
   \RequirePackage{times}				% font type Times New Roman
@@ -175,7 +186,11 @@
           \ifseminar
             Seminararbeit\\[.2cm]
           \else
-            >>SET TYPE (seminar, bachelor, or master) IN DOCUMENTCLASS OPTIONS<<
+            \ifproposal
+              Proposal\\[.2cm]
+                \else
+                  >>SET TYPE (seminar, bachelor, or master) IN DOCUMENTCLASS OPTIONS<<
+            \fi
           \fi
         \fi
       \fi
@@ -183,30 +198,34 @@
     \ifseminar
       %do nothing
     \else
-      zur Erlangung des Grades
-      \iffemalemale
-        einer/eines
+      \ifproposal
+        %do nothing
       \else
-        \iffemale
-          einer
+        zur Erlangung des Grades
+        \iffemalemale
+          einer/eines
         \else
-          \ifmale
-            eines
+          \iffemale
+            einer
           \else
-            >>SET GENDER (fm, f, or m) IN DOCUMENTCLASS OPTIONS<<
+            \ifmale
+              eines
+            \else
+              >>SET GENDER (fm, f, or m) IN DOCUMENTCLASS OPTIONS<<
+            \fi
           \fi
         \fi
-      \fi
-      \ifbachelor
-        Bachelor of Science (B.Sc.)\\
-      \else
-        \ifmaster
-          Master of Science (M.Sc.)\\
+        \ifbachelor
+          Bachelor of Science (B.Sc.)\\
         \else
-          >>SET GRADE (bachelor or master) IN DOCUMENTCLASS OPTIONS<<
+          \ifmaster
+            Master of Science (M.Sc.)\\
+          \else
+            >>SET GRADE (bachelor or master) IN DOCUMENTCLASS OPTIONS<<
+          \fi
         \fi
+        im Studiengang \degreecourse\\[.75cm]
       \fi
-      im Studiengang \degreecourse\\[.75cm]
     \fi
     \begin{large}
       vorgelegt von\\
@@ -237,50 +256,54 @@
   \ifseminar
   %don't print the assertion
   \else
-    \iftwoside
+    \ifproposal
+    %don't print the assertion
+    \else
+      \iftwoside
+        \begin{titlepage}
+          \null\clearpage
+        \end{titlepage}
+      \fi
+      \newcount\authornumber
+      \ifgroup
+        \authornumber=2
+      \else
+        \authornumber=1
+      \fi
       \begin{titlepage}
-        \null\clearpage
+        \begin{flushleft}
+          \loop\ifnum\authornumber>0
+            \begin{Large}
+              Erkl{\"a}rung\\[5mm]
+            \end{Large}
+            Hiermit best\"atige ich, dass die vorliegende Arbeit von mir selbstst\"andig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel -- insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen -- benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr\"ufungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
+            \begin{center}
+            \begin{tabular}{l p{1cm} cc}
+              {} & {} & Ja & Nein\\[.5cm]
+              Mit der Einstellung dieser Arbeit in die Bibliothek& {} & {} & {}\\
+              bin ich einverstanden. & {} & $\square$ & $\square$\\[.5cm]
+              Der Ver\"offentlichung dieser Arbeit im Internet& {} & {} & {}\\
+              stimme ich zu.& {} & $\square$ & $\square$\\[.5cm]
+              Der Text dieser Arbeit ist unter einer Creative & {} & {} & {}\\
+              Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+              Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
+              Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+              Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
+              Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\
+            \end{tabular}\\[2cm]
+            \end{center}
+            \begin{small}
+              \dotfill\\
+              (Ort, Datum)\hfill(Unterschrift)
+            \end{small}
+            \advance\authornumber by -1
+            \ifnum\authornumber>0
+              \clearpage
+            \fi
+          \repeat
+        \end{flushleft}
       \end{titlepage}
     \fi
-    \newcount\authornumber
-    \ifgroup
-      \authornumber=2
-    \else
-      \authornumber=1
-    \fi
-    \begin{titlepage}
-      \begin{flushleft}
-        \loop\ifnum\authornumber>0
-          \begin{Large}
-            Erkl{\"a}rung\\[5mm]
-          \end{Large}
-          Hiermit best\"atige ich, dass die vorliegende Arbeit von mir selbstst\"andig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel -- insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen -- benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr\"ufungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
-          \begin{center}
-          \begin{tabular}{l p{1cm} cc}
-            {} & {} & Ja & Nein\\[.5cm]
-            Mit der Einstellung dieser Arbeit in die Bibliothek& {} & {} & {}\\
-            bin ich einverstanden. & {} & $\square$ & $\square$\\[.5cm]
-            Der Ver\"offentlichung dieser Arbeit im Internet& {} & {} & {}\\
-            stimme ich zu.& {} & $\square$ & $\square$\\[.5cm]
-            Der Text dieser Arbeit ist unter einer Creative & {} & {} & {}\\
-            Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
-            Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
-            Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
-            Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
-            Commons Lizenz (CC BY-SA 3.0) verf\"ugbar. & {} & $\square$ & $\square$\\
-          \end{tabular}\\[2cm]
-          \end{center}
-          \begin{small}
-            \dotfill\\
-            (Ort, Datum)\hfill(Unterschrift)
-          \end{small}
-          \advance\authornumber by -1
-          \ifnum\authornumber>0
-            \clearpage
-          \fi
-        \repeat
-      \end{flushleft}
-    \end{titlepage}
   \fi
   \iftwoside
     \ifgroup
