@@ -263,16 +263,16 @@
       Koblenz, im\monthword\ \the\year
     \fi
   \end{titlepage}
+  \iftwoside
+    \thispagestyle{empty}
+    \null\varclearpage
+  \fi
   \ifseminar
   %don't print the assertion
   \else
     \ifproposal
     %don't print the assertion
     \else
-      \iftwoside
-        \thispagestyle{empty}
-        \null\varclearpage
-      \fi
       \newcount\authornumber
       \ifgroup
         \authornumber=2
