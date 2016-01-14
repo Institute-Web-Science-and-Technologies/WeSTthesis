@@ -93,9 +93,9 @@
     \PassOptionsToClass{twoside}{scrreprt}
   \fi
 \else
-  \LoadClass[a4paper,11pt,titlepage]{article}
+  \LoadClass[a4paper,11pt,titlepage]{scrartcl}
   \iftwoside
-    \PassOptionsToClass{twoside}{article}
+    \PassOptionsToClass{twoside}{scrartcl}
   \fi
 \fi
 
@@ -270,9 +270,8 @@
     %don't print the assertion
     \else
       \iftwoside
-        \begin{titlepage}
-          \null\clearpage
-        \end{titlepage}
+        \thispagestyle{empty}
+        \null\varclearpage
       \fi
       \newcount\authornumber
       \ifgroup
@@ -280,7 +279,6 @@
       \else
         \authornumber=1
       \fi
-      \begin{titlepage}
         \begin{flushleft}
           \loop\ifnum\authornumber>0
             \begin{Large}
@@ -307,21 +305,9 @@
               (Ort, Datum)\hfill(Unterschrift)
             \end{small}
             \advance\authornumber by -1
-            \ifnum\authornumber>0
-              \clearpage
-            \fi
+            \varclearpage
           \repeat
         \end{flushleft}
-      \end{titlepage}
-    \fi
-  \fi
-  \iftwoside
-    \ifgroup
-      % everything is just fine
-    \else
-      \begin{titlepage}
-        \null\clearpage
-      \end{titlepage}
     \fi
   \fi
 }
