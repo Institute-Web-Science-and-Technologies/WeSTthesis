@@ -256,12 +256,12 @@
         Zweitgutachter: & \secondreviewer\\
         {} & \secondreviewerinfo\\[2cm]
       \fi
+      \ifdate
+        Koblenz, \today &
+      \else
+        Koblenz, im\monthword\ \the\year &
+      \fi
     \end{tabular}\\
-    \ifdate
-      Koblenz, \today
-    \else
-      Koblenz, im\monthword\ \the\year
-    \fi
   \end{titlepage}
   \iftwoside
     \thispagestyle{empty}
