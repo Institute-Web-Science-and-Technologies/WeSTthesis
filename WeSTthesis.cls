@@ -261,7 +261,7 @@
       \else
         Koblenz, im\monthword\ \the\year &
       \fi
-    \end{tabular}\\
+    \end{tabular}
   \end{titlepage}
   \iftwoside
     \thispagestyle{empty}
