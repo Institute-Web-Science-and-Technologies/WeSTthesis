@@ -286,7 +286,7 @@
             \begin{Large}
               Erkl{\"a}rung\\[5mm]
             \end{Large}
-            Hiermit best{\"a}tige ich, dass die vorliegende Arbeit von mir selbstst{\"a}ndig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel --- insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen --- benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr{\"u}fungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
+            Hiermit best{\"a}tige ich, dass die vorliegende Arbeit von mir selbstst{\"a}ndig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel \textendash{} insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen \textendash{} benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr{\"u}fungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
             \begin{center}
             \begin{tabular}{l p{1cm} cc}
               {} & {} & Ja & Nein\\[.5cm]
