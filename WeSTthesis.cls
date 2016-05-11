@@ -4,17 +4,11 @@
 %  LaTeX document class for seminar papers, proposals, bachelor's theses, and
 %  master's theses written at the Institute for Web Science and Technologies.
 %
-%  (C) 2015 Institute for Web Science and Technologies <west@uni-koblenz.de>
+%  (C) 2016 Institute for Web Science and Technologies <west@uni-koblenz.de>
 %           University of Koblenz-Landau, Campus Koblenz
 %
 %  Special thanks to Prof. Stefan Mueller for allowing the adaptation of
 %  cgBA.cls.
-%
-%	 2013/05/15  v1.0  Martin Koerner<info@mkoerner.de>  initial version
-%	 2015/01/06  v1.1  Martin Koerner<info@mkoerner.de>  add options for seminar
-%                                                      and date
-%	 2015/12/20  v1.2  Martin Koerner<info@mkoerner.de>  add options for proposal
-%                                                      and scrreprt
 %
 %*******************************************************************************
 
