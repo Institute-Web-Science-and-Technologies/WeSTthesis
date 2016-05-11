@@ -27,29 +27,29 @@
 
 %--- Declaration of variables --------------------------------------------------
 
-\newif\iffemalemale
-\newif\iffemale
-\newif\ifmale
+\newif\iffemalemale{}
+\newif\iffemale{}
+\newif\ifmale{}
 
-\newif\ifgroup
+\newif\ifgroup{}
 
-\newif\ifseminar
-\newif\ifproposal
-\newif\ifbachelor
-\newif\ifmaster
+\newif\ifseminar{}
+\newif\ifproposal{}
+\newif\ifbachelor{}
+\newif\ifmaster{}
 
-\newif\ifscrreprt
+\newif\ifscrreprt{}
 
-\newif\ifdate
+\newif\ifdate{}
 
-\newif\iftimes
-\newif\ifpalatino
+\newif\iftimes{}
+\newif\ifpalatino{}
 
-\newif\iftwoside
+\newif\iftwoside{}
 
-\newif\ifbinding
+\newif\ifbinding{}
 
-\newif\ifframes
+\newif\ifframes{}
 
 
 %--- Initialization of variables -----------------------------------------------
@@ -83,40 +83,42 @@
 %--- Execution of options ------------------------------------------------------
 
 
-\ProcessOptions
+\ProcessOptions{}
 
 %--- Loading of packages -------------------------------------------------------
 
-\ifscrreprt
+\ifscrreprt{}
   \LoadClass[a4paper,11pt,titlepage]{scrreprt}
-  \iftwoside
+  \iftwoside{}
     \PassOptionsToClass{twoside}{scrreprt}
   \fi
 \else
   \LoadClass[a4paper,11pt,titlepage]{scrartcl}
-  \iftwoside
+  \iftwoside{}
     \PassOptionsToClass{twoside}{scrartcl}
   \fi
 \fi
 
+\RequirePackage{titling}
+\RequirePackage{ifoddpage}
 % Default: Computer Modern (TeX-Standard)
-\iftimes
+\iftimes{}
   \RequirePackage{times}				% font type Times New Roman
 \fi
-\ifpalatino
+\ifpalatino{}
   \RequirePackage{palatino}			% font type Book Antiqua/Palatino
 \fi
 
-\ifbinding
+\ifbinding{}
   % twoside does not include a binding offset itself
-  \ifframes
+  \ifframes{}
     % showframe option for testing the layout
     \RequirePackage[bindingoffset=8mm,showframe]{geometry}
   \else
     \RequirePackage[bindingoffset=8mm]{geometry}
   \fi
 \else
-  \ifframes
+  \ifframes{}
     % showframe option for testing the layout
     \RequirePackage[showframe]{geometry}
   \else
@@ -127,12 +129,12 @@
 
 %--- Code ----------------------------------------------------------------------
 
-\iftwoside
+\iftwoside{}
   \newcommand{\varclearpage}{
-    \ifodd\c@page
-      \cleardoublepage
+    \ifoddpage{}
+      \cleardoublepage{}
     \else
-      \clearpage
+      \clearpage{}
     \fi
   }
 \else
@@ -148,9 +150,9 @@
 \newcommand{\secondreviewerinfo}[1]{\def\secondreviewerinfo{#1}}
 
 \newcommand{\monthword}{
-  \ifcase\month
-    \or Januar\or Februar\or M\"arz\or April\or Mai\or Juni\or Juli
-    \or August\or September\or Oktober\or November\or Dezember\fi
+  \ifcase\month{}
+    \or{}Januar\or{}Februar\or{}M\"arz\or{}April\or{}Mai\or{}Juni\or{}Juli
+    \or{}August\or{}September\or{}Oktober\or{}November\or{}Dezember\fi
 }
 
 % redefine \maketitle
@@ -186,17 +188,17 @@
     \renewcommand{\arraystretch}{1.0} %reset arraystretch to default
     \vspace*{1.75cm}
     \begin{huge}
-      \textbf{\@title}\\[1.75cm]
-      \ifbachelor
+      \textbf{\thetitle}\\[1.75cm]
+      \ifbachelor{}
         Bachelorarbeit\\[.2cm]
       \else
-        \ifmaster
+        \ifmaster{}
           Masterarbeit\\[.2cm]
         \else
-          \ifseminar
+          \ifseminar{}
             Seminararbeit\\[.2cm]
           \else
-            \ifproposal
+            \ifproposal{}
               Proposal\\[.2cm]
                 \else
                   >>SET TYPE (seminar, bachelor, or master) IN DOCUMENTCLASS OPTIONS<<
@@ -205,30 +207,30 @@
         \fi
       \fi
     \end{huge}
-    \ifseminar
+    \ifseminar{}
       %do nothing
     \else
-      \ifproposal
+      \ifproposal{}
         %do nothing
       \else
         zur Erlangung des Grades
-        \iffemalemale
+        \iffemalemale{}
           einer/eines
         \else
-          \iffemale
+          \iffemale{}
             einer
           \else
-            \ifmale
+            \ifmale{}
               eines
             \else
               >>SET GENDER (fm, f, or m) IN DOCUMENTCLASS OPTIONS<<
             \fi
           \fi
         \fi
-        \ifbachelor
+        \ifbachelor{}
           Bachelor of Science (B.Sc.)\\
         \else
-          \ifmaster
+          \ifmaster{}
             Master of Science (M.Sc.)\\
           \else
             >>SET GRADE (bachelor or master) IN DOCUMENTCLASS OPTIONS<<
@@ -241,11 +243,11 @@
       vorgelegt von\\
     \end{large}
     \begin{Large}
-      \@author\\[3.79cm]
+      \theauthor\\[3.79cm]
     \end{Large}
    	\end{center}
     \begin{tabular}{ll}
-      \ifseminar
+      \ifseminar{}
         Betreuer: & \firstreviewer\\
         {} & \firstreviewerinfo\\[2.5mm]
         {} & \secondreviewer\\
@@ -256,35 +258,35 @@
         Zweitgutachter: & \secondreviewer\\
         {} & \secondreviewerinfo\\[2cm]
       \fi
-      \ifdate
-        Koblenz, \today &
+      \ifdate{}
+        Koblenz, \today{} &
       \else
-        Koblenz, im\monthword\ \the\year &
+        Koblenz, im\monthword{} \the\year{} &
       \fi
     \end{tabular}
   \end{titlepage}
-  \iftwoside
+  \iftwoside{}
     \thispagestyle{empty}
-    \null\varclearpage
+    \null\varclearpage{}
   \fi
-  \ifseminar
+  \ifseminar{}
   %don't print the assertion
   \else
-    \ifproposal
+    \ifproposal{}
     %don't print the assertion
     \else
-      \newcount\authornumber
-      \ifgroup
-        \authornumber=2
+      \newcounter{AuthorNumber}
+      \ifgroup{}
+        \setcounter{AuthorNumber}{2}
       \else
-        \authornumber=1
+        \setcounter{AuthorNumber}{1}
       \fi
         \begin{flushleft}
-          \loop\ifnum\authornumber>0
+          \loop\ifnum\theAuthorNumber>0
             \begin{Large}
               Erkl{\"a}rung\\[5mm]
             \end{Large}
-            Hiermit best\"atige ich, dass die vorliegende Arbeit von mir selbstst\"andig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel -- insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen -- benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr\"ufungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
+            Hiermit best{\"a}tige ich, dass die vorliegende Arbeit von mir selbstst{\"a}ndig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel --- insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen --- benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr{\"u}fungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium (CD-Rom).\\[.75cm]
             \begin{center}
             \begin{tabular}{l p{1cm} cc}
               {} & {} & Ja & Nein\\[.5cm]
@@ -304,9 +306,9 @@
               \dotfill\\
               (Ort, Datum)\hfill(Unterschrift)
             \end{small}
-            \advance\authornumber by -1
-            \varclearpage
-          \repeat
+            \addtocounter{AuthorNumber}{-1}
+            \varclearpage{}
+          \repeat{}
         \end{flushleft}
     \fi
   \fi
