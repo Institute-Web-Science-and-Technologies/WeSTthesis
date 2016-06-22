@@ -16,7 +16,7 @@
 %--- Identification ------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{WeSTthesis}[2015/12/20 v1.2 Document class for seminar papers, proposals, bachelor's theses, and master's theses written at the Institute for Web Science and Technologies, University of Koblenz-Landau, Campus Koblenz.]
+\ProvidesClass{WeSTthesis}[2015/12/20 v1.3 Document class for seminar papers, proposals, bachelor's theses, and master's theses written at the Institute for Web Science and Technologies, University of Koblenz-Landau, Campus Koblenz.]
 
 
 %--- Declaration of variables --------------------------------------------------
