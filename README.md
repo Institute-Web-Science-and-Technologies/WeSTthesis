@@ -10,13 +10,14 @@ The following options are supported:
 
 - `f|m|fm`                            - gender used in the title: female, male, or both (required)
 - `seminar|proposal|bachelor|master`  - seminar paper, proposal, bachelor's thesis, or master's thesis (required)
-- `scrreprt`                          - use the scrreprt documentclass instead of article (optional)
-- `group`                             - prints two statements after the cover page (optional)
-- `date`                              - prints the exact date instead of month and year (optional)
-- `times|palatino`	                  - used font (only one can be applied at the same time, the default font is "Computer Modern") (optional)
-- `twoside`                           - layout for two-sided print (optional)
-- `binding`                           - adds 8mm on the left/right side for binding (optional)
-- `frames`                            - prints additional frames to check the document layout (optional)
+- `scrreprt`                          - use the scrreprt documentclass (optional, default: article class)
+- `group`                             - prints two statements after the cover page (optional, default: one statement)
+- `date`                              - prints the exact date (optional, default: month and year)
+- `times|palatino`	                  - used font (optional, default: Computer Modern)
+- `twoside`                           - layout for two-sided print (optional, default: one-sided)
+- `binding`                           - adds 8mm on the left/right side for binding (optional, default: no binding)
+- `codegpl`                           - lists in the that the source code is available via a GNU General Public License (optional, default: CC license)
+- `frames`                            - prints additional frames to check the document layout (optional, default: no frames)
 
 If the option `twoside` is activated, there are blank pages inserted after the cover page and its following statement(s).
 

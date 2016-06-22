@@ -45,6 +45,7 @@
 
 \newif\ifframes{}
 
+\newif\ifcodegpl{}
 
 %--- Initialization of variables -----------------------------------------------
 
@@ -72,6 +73,8 @@
 \DeclareOption{binding}{\bindingtrue}
 
 \DeclareOption{frames}{\framestrue}
+
+\DeclareOption{codegpl}{\codegpltrue}
 
 
 %--- Execution of options ------------------------------------------------------
@@ -290,8 +293,13 @@
               stimme ich zu.& {} & $\square$ & $\square$\\[.5cm]
               Der Text dieser Arbeit ist unter einer Creative & {} & {} & {}\\
               Commons Lizenz (CC BY-SA 4.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
-              Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
-              Lizenz (CC BY-SA 4.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+              \ifcodegpl{}%
+                Der Quellcode ist unter einer GNU General Public & {} & {} & {}\\
+                License (GPLv3) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+              \else%
+                Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
+                Lizenz (CC BY-SA 4.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
+              \fi%
               Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
               Commons Lizenz (CC BY-SA 4.0) verf\"ugbar. & {} & $\square$ & $\square$\\
             \end{tabular}\\[2cm]
