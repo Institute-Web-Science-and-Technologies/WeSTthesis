@@ -87,12 +87,12 @@
 \ifscrreprt{}
   \LoadClass[a4paper,11pt,titlepage]{scrreprt}
   \iftwoside{}
-    \PassOptionsToClass{twoside}{scrreprt}
+    \PassOptionsToClass{cleardoublepage=empty,twoside}{scrreprt}
   \fi
 \else
   \LoadClass[a4paper,11pt,titlepage]{scrartcl}
   \iftwoside{}
-    \PassOptionsToClass{twoside}{scrartcl}
+    \PassOptionsToClass{cleardoublepage=empty,twoside}{scrartcl}
   \fi
 \fi
 
@@ -126,18 +126,6 @@
 
 %--- Code ----------------------------------------------------------------------
 
-\iftwoside{}
-  \newcommand{\varclearpage}{
-    \ifoddpage{}
-      \cleardoublepage{}
-    \else
-      \clearpage{}
-    \fi
-  }
-\else
-  \newcommand{\varclearpage}{\clearpage}
-\fi
-
 \newcommand{\degreecourse}[1]{\def\degreecourse{#1}}
 
 \newcommand{\firstreviewer}[1]{\def\firstreviewer{#1}}
@@ -147,7 +135,7 @@
 \newcommand{\secondreviewerinfo}[1]{\def\secondreviewerinfo{#1}}
 
 \newcommand{\monthword}{
-  \ifcase\month{}
+  \ifcase\month{}%
     \or{}Januar\or{}Februar\or{}M\"arz\or{}April\or{}Mai\or{}Juni\or{}Juli
     \or{}August\or{}September\or{}Oktober\or{}November\or{}Dezember\fi
 }
@@ -186,16 +174,16 @@
     \vspace*{1.75cm}
     \begin{huge}
       \textbf{\thetitle}\\[1.75cm]
-      \ifbachelor{}
+      \ifbachelor{}%
         Bachelorarbeit\\[.2cm]
       \else
-        \ifmaster{}
+        \ifmaster{}%
           Masterarbeit\\[.2cm]
         \else
-          \ifseminar{}
+          \ifseminar{}%
             Seminararbeit\\[.2cm]
           \else
-            \ifproposal{}
+            \ifproposal{}%
               Proposal\\[.2cm]
                 \else
                   >>SET TYPE (seminar, bachelor, or master) IN DOCUMENTCLASS OPTIONS<<
@@ -204,30 +192,30 @@
         \fi
       \fi
     \end{huge}
-    \ifseminar{}
+    \ifseminar{}%
       %do nothing
     \else
-      \ifproposal{}
+      \ifproposal{}%
         %do nothing
       \else
         zur Erlangung des Grades
-        \iffemalemale{}
+        \iffemalemale{}%
           einer/eines
         \else
-          \iffemale{}
+          \iffemale{}%
             einer
           \else
-            \ifmale{}
+            \ifmale{}%
               eines
             \else
               >>SET GENDER (fm, f, or m) IN DOCUMENTCLASS OPTIONS<<
             \fi
           \fi
         \fi
-        \ifbachelor{}
+        \ifbachelor{}%
           Bachelor of Science (B.Sc.)\\
         \else
-          \ifmaster{}
+          \ifmaster{}%
             Master of Science (M.Sc.)\\
           \else
             >>SET GRADE (bachelor or master) IN DOCUMENTCLASS OPTIONS<<
@@ -244,7 +232,7 @@
     \end{Large}
    	\end{center}
     \begin{tabular}{ll}
-      \ifseminar{}
+      \ifseminar{}%
         Betreuer: & \firstreviewer\\
         {} & \firstreviewerinfo\\[2.5mm]
         {} & \secondreviewer\\
@@ -255,7 +243,7 @@
         Zweitgutachter: & \secondreviewer\\
         {} & \secondreviewerinfo\\[2cm]
       \fi
-      \ifdate{}
+      \ifdate{}%
         Koblenz, \today{} &
       \else
         Koblenz, im\monthword{} \the\year{} &
@@ -264,16 +252,16 @@
   \end{titlepage}
   \iftwoside{}
     \thispagestyle{empty}
-    \null\varclearpage{}
+    \null\cleardoublepage{}
   \fi
-  \ifseminar{}
+  \ifseminar{}%
   %don't print the assertion
   \else
-    \ifproposal{}
+    \ifproposal{}%
     %don't print the assertion
     \else
       \newcounter{AuthorNumber}
-      \ifgroup{}
+      \ifgroup{}%
         \setcounter{AuthorNumber}{2}
       \else
         \setcounter{AuthorNumber}{1}
@@ -296,10 +284,10 @@
               \ifcodegpl{}%
                 Der Quellcode ist unter einer GNU General Public & {} & {} & {}\\
                 License (GPLv3) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
-              \else%
+              \else
                 Der Quellcode ist unter einer Creative Commons & {} & {} & {}\\
                 Lizenz (CC BY-SA 4.0) verf\"ugbar. & {} & $\square$ & $\square$\\[.5cm]
-              \fi%
+              \fi
               Die erhobenen Daten sind unter einer Creative & {} & {} & {}\\
               Commons Lizenz (CC BY-SA 4.0) verf\"ugbar. & {} & $\square$ & $\square$\\
             \end{tabular}\\[2cm]
@@ -309,8 +297,8 @@
               (Ort, Datum)\hfill(Unterschrift)
             \end{small}
             \addtocounter{AuthorNumber}{-1}
-            \varclearpage{}
-          \repeat{}
+            \cleardoublepage{}%
+          \repeat{}%
         \end{flushleft}
     \fi
   \fi
