@@ -40,9 +40,6 @@ The following commands are used after the `\begin{document}` statement.
 
     \selectlanguage{english}  % optional: change document language from ngerman to english
 
-    \varclearpage  % \cleardoublepage if twoside is set and the current page number is odd. \clearpage otherwise (useful for switching between two-side and single-side layout)
-
-
 ##Example
 For an example see [example.tex](example.tex). The output should look like [example.pdf](example.pdf).
 
