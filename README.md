@@ -8,6 +8,7 @@ The following command is used to include the document class in the .tex document
 
 The following options are supported:
 
+- `english`                           - Prints an english title page and statement
 - `f|m|fm`                            - gender used in the title: female, male, or both (required)
 - `seminar|proposal|bachelor|master`  - seminar paper, proposal, bachelor's thesis, or master's thesis (required)
 - `scrreprt`                          - use the scrreprt documentclass (optional, default: article class)
@@ -16,10 +17,10 @@ The following options are supported:
 - `times|palatino`	                  - used font (optional, default: Computer Modern)
 - `twoside`                           - layout for two-sided print (optional, default: one-sided)
 - `binding`                           - adds 8mm on the left/right side for binding (optional, default: no binding)
-- `codegpl`                           - lists in the that the source code is available via a GNU General Public License (optional, default: CC license)
 - `frames`                            - prints additional frames to check the document layout (optional, default: no frames)
+- `nogermanabstract`                  - At University of Koblenz-Landau, this option is only allowed for M.Sc. Web Science students. Only prints the english abstract. 
 
-If the option `twoside` is activated, there are blank pages inserted after the cover page and its following statement(s).
+If the option `twoside` is used, blank pages are inserted after the cover page and its following statement(s).
 
 The following commands are used to format the cover page. They are used before `\begin{document}`.
 
@@ -34,11 +35,14 @@ The following commands are used to format the cover page. They are used before `
     \secondreviewer{Name of the second reviewer (incl. academic title)}
     \secondreveiwerinfo{insititute/research group or external institution}
 
+The following commands declare the abstract texts.
+
+    \englishabstract{English abstract text.}
+    \germanabstract{German abstract text.}
+
 The following commands are used after the `\begin{document}` statement.
 
     \maketitle  % prints the cover page and a statement about used sources and publication
-
-    \selectlanguage{english}  % optional: change document language from ngerman to english
 
 ## Example
 For an example see [example.tex](example.tex). The output should look like [example.pdf](example.pdf).
