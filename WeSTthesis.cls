@@ -420,6 +420,37 @@
             \cleardoublepage%
           \repeat%
         \end{flushleft}
+	
+	\vspace{2em}
+        \begin{flushleft}
+        	\begin{Large}
+        		\ifenglish%
+                	Note
+              	\else
+                	Anmerkung
+              \fi
+              \\[5mm]
+        	\end{Large}
+
+%           \ifenglish%
+            \begin{itemize}
+            	\item If you would like us to contact you for the graduation ceremony, 
+                \item[] please provide your personal E-mail address: \dotfill
+                \item If you would like us to send you an invite to join the WeST Alumni 
+                \item[] and Members group on LinkedIn, please provide your LinkedIn ID : \dotfill
+            \end{itemize}
+            
+%             \else
+%             \begin{itemize}
+%             	\item Wenn Sie m\"ochten, dass wir Sie zur Abschlussfeier kontaktieren, 
+%                 \item[] geben Sie bitte Ihre pers\"onliche E-Mail-Adresse an: \dotfill
+%                 \item Wenn Sie m\"ochten, dass wir Ihnen eine Einladung zur Teilnahme 
+%                 \item[]an der WeST Alumni- und Mitgliedergruppe auf LinkedIn senden, geben Sie bitte Ihre LinkedIn ID an: \dotfill
+%             \end{itemize}
+%             \fi
+%             \\[5mm]
+            \cleardoublepage%
+        \end{flushleft}
     \fi
   \fi
   \ifnogermanabstract
